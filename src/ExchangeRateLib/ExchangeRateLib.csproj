@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <RootNamespace>Theonorg.DotnetTraining.ExchangeRateLib</RootNamespace>
+
+    <PackageId>Theonorg.DotnetTraining.ExchangeRateLib</PackageId>
+    <Version>1.2.0</Version>
+    <Authors>tiberna</Authors>
+    <Company>theonorg</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>
