@@ -10,7 +10,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <RootNamespace>Theonorg.DotnetTraining.ConsoleUI</RootNamespace>
+    <RootNamespace>Theonorg.DotnetTraining.ConsoleApp</RootNamespace>
   </PropertyGroup>
 
 </Project>
