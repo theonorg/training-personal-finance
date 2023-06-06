@@ -24,6 +24,7 @@ public class Account
         Currency.EUR => new EuroExchangeRateCalculator(),
         Currency.USD => new USDExchangeRateCalculator(),
         Currency.GBP => new GBPExchangeRateCalculator(),
+        _ => throw new ArgumentException($"Currency {accountCurrency} is not supported.")
     };
 
     internal void AddTransaction(Transaction transaction)

@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Theonorg.DotnetTraining.ExchangeRateLib;
 
 public abstract class ExchangeRateCalculatorBase : IExchangeRateCalculator
