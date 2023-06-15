@@ -26,7 +26,7 @@ public class AccountService
 
     public void AddIncome(string description, Currency currency, decimal amount, DateTime transactionDate)
     {
-        if (amount < 0)
+        if (amount <= 0)
         {
             throw new ArgumentException("Amount cannot be negative");
         }
