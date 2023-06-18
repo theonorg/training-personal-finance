@@ -1,0 +1,33 @@
+GET http://localhost:5400/transaction
+
+###
+
+GET http://localhost:5400/transaction/1
+
+###
+
+POST http://localhost:5400/transaction
+Content-Type: application/json
+
+{
+    "Description": "New Transaction",
+    "Currency": "USD",
+    "Amount": 100,
+    "TransactionDate": "2019-01-01T00:00:00"
+}
+
+###
+
+PUT http://localhost:5400/transaction/1
+Content-Type: application/json
+
+{
+    "Description": "New Transaction",
+    "Currency": "USD",
+    "Amount": 1000,
+    "TransactionDate": "2019-01-01T00:00:00"
+}
+
+###
+
+DELETE http://localhost:5400/transaction/3
