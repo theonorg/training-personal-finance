@@ -8,6 +8,7 @@ builder.Logging.AddSimpleConsole(opts =>
             opts.ColorBehavior = LoggerColorBehavior.Disabled;
         });
 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
         {
@@ -18,8 +19,11 @@ builder.Services.AddSwaggerGen(c =>
             });
         });
 
+builder.Services.AddDbContext<PersonalFinanceDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PersonalFinanceDb")));
 
-builder.Services.AddSingleton<ITransactionService, TransactionService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
@@ -31,5 +35,8 @@ if (app.Environment.IsDevelopment())
 
 var transactionEndpoints = app.MapGroup("/transaction")
                               .MapTransactionsApi();
+
+var accountEndpoints = app.MapGroup("/account")
+                              .MapAccountsApi();
 
 app.Run();

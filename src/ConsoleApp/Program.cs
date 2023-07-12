@@ -26,7 +26,7 @@ do {
 Console.Write("Initial Balance: ");
 decimal initialBalance = decimal.Parse(Console.ReadLine()!);
 
-AccountService accountService = new AccountService(accountName, currency.Value, initialBalance);
+var accountService = new AccountService(accountName, currency.Value, initialBalance);
 
 Console.WriteLine($"Account created: {accountService.Account}");
 

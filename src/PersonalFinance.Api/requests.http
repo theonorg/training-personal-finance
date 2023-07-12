@@ -1,3 +1,36 @@
+GET http://localhost:5400/account
+
+###
+
+GET http://localhost:5400/account/2
+
+###
+
+POST http://localhost:5400/account
+Content-Type: application/json
+
+{
+    "Name": "New Account",
+    "Currency": "USD",
+    "Balance": 1000
+}
+
+###
+
+PUT http://localhost:5400/account/2
+Content-Type: application/json
+
+{
+    "Name": "My Account 2"
+}
+
+###
+
+DELETE http://localhost:5400/account/4
+
+
+###
+
 GET http://localhost:5400/transaction
 
 ###
@@ -6,7 +39,7 @@ GET http://localhost:5400/transaction/1
 
 ###
 
-POST http://localhost:5400/transaction
+POST http://localhost:5400/transaction?accountId=2
 Content-Type: application/json
 
 {

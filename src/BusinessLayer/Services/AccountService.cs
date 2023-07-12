@@ -19,7 +19,7 @@ public class AccountService
             amount = -amount;
         }
 
-        Expense expense = new Expense(description, currency, amount, Account.ExchangeRateCalculator.Convert(amount, currency.ToString()), transactionDate);
+        var expense = new Expense(description, currency, amount, Account.ExchangeRateCalculator.Convert(amount, currency.ToString()), transactionDate);
 
         Account.AddTransaction(expense);
     }
@@ -31,7 +31,7 @@ public class AccountService
             throw new ArgumentException("Amount cannot be negative");
         }
 
-        Income income = new Income(description, currency, amount, Account.ExchangeRateCalculator.Convert(amount, currency.ToString()), transactionDate);
+        var income = new Income(description, currency, amount, Account.ExchangeRateCalculator.Convert(amount, currency.ToString()), transactionDate);
 
         Account.AddTransaction(income);
     }

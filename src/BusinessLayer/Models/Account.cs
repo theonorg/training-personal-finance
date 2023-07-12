@@ -19,7 +19,7 @@ public class Account
         ExchangeRateCalculator = SelectExchangeRateCalculator(accountCurrency);
     }
 
-    private IExchangeRateCalculator SelectExchangeRateCalculator(Currency accountCurrency) => accountCurrency switch
+    private static IExchangeRateCalculator SelectExchangeRateCalculator(Currency accountCurrency) => accountCurrency switch
     {
         Currency.EUR => new EuroExchangeRateCalculator(),
         Currency.USD => new USDExchangeRateCalculator(),

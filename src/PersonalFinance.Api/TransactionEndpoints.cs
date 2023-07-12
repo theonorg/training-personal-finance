@@ -1,6 +1,5 @@
 
 
-using Microsoft.AspNetCore.Mvc;
 
 namespace Theonorg.DotnetTraining.PersonalFinanceAPI;
 
@@ -38,16 +37,16 @@ public static class TransactionEndpoints
         return group;
     }
 
-    public static IResult GetAllTransactions([FromServices] ITransactionService transactionService)
+    public static async Task<IResult> GetAllTransactions([FromServices] ITransactionService transactionService)
     {
-        return Results.Ok(transactionService.GetTransactions());
+        return Results.Ok(await transactionService.GetTransactionsAsync());
     }
 
-    public static IResult GetTransaction([FromServices] ITransactionService transactionService, int id)
+    public static async Task<IResult> GetTransaction([FromServices] ITransactionService transactionService, int id)
     {
         try
         {
-            return Results.Ok(transactionService.GetTransactionById(id));
+            return Results.Ok(await transactionService.GetTransactionByIdAsync(id));
         }
         catch (ArgumentException)
         {
@@ -55,20 +54,17 @@ public static class TransactionEndpoints
         }
     }
     
-    public static IResult CreateTransaction([FromServices] ITransactionService transactionService, [FromBody] TransactionDTO transaction)
+    public static async Task<IResult> CreateTransaction([FromServices] ITransactionService transactionService, [FromBody] TransactionDTO transaction, [FromQuery] int accountId)
     {
-        var currency = Enum.Parse<Currency>(transaction.Currency);
-        var newTransaction = transactionService.Add(transaction.Description, currency, transaction.Amount, transaction.TransactionDate);
+        var newTransaction = await transactionService.AddTransactionAsync(accountId, transaction.Description, transaction.Currency, transaction.Amount, transaction.TransactionDate);
         return Results.Created($"/{newTransaction.Id}", newTransaction);
     }
 
-    public static IResult UpdateTransaction([FromServices] ITransactionService transactionService, int id, [FromBody] TransactionDTO transaction)
+    public static async Task<IResult> UpdateTransaction([FromServices] ITransactionService transactionService, int id, [FromBody] TransactionDTO transaction)
     {
         try
         {
-            var myTransaction = transactionService.GetTransactionById(id);
-            var currency = Enum.Parse<Currency>(transaction.Currency);
-            transactionService.UpdateTransactionById(id, transaction.Description, currency, transaction.Amount, transaction.TransactionDate);
+            var updatedTransaction = await transactionService.UpdateTransactionByIdAsync(id, transaction.Description, transaction.Currency, transaction.Amount, transaction.TransactionDate);
             return Results.NoContent();
         }
         catch (ArgumentException)
@@ -77,12 +73,11 @@ public static class TransactionEndpoints
         }
     }
 
-    public static IResult DeleteTransaction([FromServices] ITransactionService transactionService, int id)
+    public static async Task<IResult> DeleteTransaction([FromServices] ITransactionService transactionService, int id)
     {
         try
         {
-            var myTransaction = transactionService.GetTransactionById(id);
-            transactionService.DeleteTransactionById(id);
+            var updatedTransaction = await transactionService.DeleteTransactionByIdAsync(id);
             return Results.NoContent();
         }
         catch (ArgumentException)
@@ -91,8 +86,8 @@ public static class TransactionEndpoints
         }
     }
 
-    public static IResult GetTransactionsByMonth([FromServices] ITransactionService transactionService, [FromRoute] int year, [FromRoute] int month)
+    public static async Task<IResult> GetTransactionsByMonth([FromServices] ITransactionService transactionService, [FromRoute] int year, [FromRoute] int month)
     {
-        return Results.Ok(transactionService.GetTransactionsByMonth(year, month));
+        return Results.Ok(await transactionService.GetTransactionsByMonthAsync(year, month));
     }
 }

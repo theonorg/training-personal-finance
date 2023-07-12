@@ -1,8 +1,11 @@
 global using Microsoft.Extensions.Logging.Console;
 global using Microsoft.OpenApi.Models;
 global using Theonorg.DotnetTraining.PersonalFinanceAPI.Services;
-global using System.Collections.Concurrent;
-global using Theonorg.DotnetTraining.BusinessLayer.Models;
 global using Theonorg.DotnetTraining.ExchangeRateLib;
 global using Theonorg.DotnetTraining.PersonalFinanceAPI;
 global using Theonorg.DotnetTraining.PersonalFinanceAPI.Models;
+global using Theonorg.DotnetTraining.PersonalFinanceAPI.Services.DTO;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.AspNetCore.Mvc;
+global using Theonorg.DotnetTraining.PersonalFinanceAPI.Models.Configuration;
