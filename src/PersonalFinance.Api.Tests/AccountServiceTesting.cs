@@ -12,10 +12,6 @@ public class AccountServiceTesting
             using (var dbContext = provider.GetRequiredService<PersonalFinanceDbContext>())
             {
                 dbContext.Database.EnsureCreated();
-                // CurrencyBaseList = dbContext.Currencies.ToArray<Currency>();
-                // var toAdd = AssetsAPIConstants.GenerateMockData(CurrencyBaseList);
-                // dbContext.Accounts.AddRange(toAdd);
-                // dbContext.SaveChanges();
             }
         }
     }
