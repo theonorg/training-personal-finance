@@ -1,0 +1,12 @@
+global using Xunit;
+global using Theonorg.DotnetTraining.PersonalFinanceAPI.Models;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Storage;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Theonorg.DotnetTraining.PersonalFinanceAPI.Services.DTO;
+global using System.Collections.Generic;
+global using System.Net;
+global using System.Net.Http.Json;
+global using System.Threading.Tasks;

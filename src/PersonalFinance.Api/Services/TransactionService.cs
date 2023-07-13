@@ -82,6 +82,8 @@ public class TransactionService : ITransactionService
             throw;
         }
 
+        await _context.Entry(transaction).Reference("Currency").LoadAsync();
+
         TransactionDTO? returnValue = new(transaction.Id, transaction.Description, transaction.Currency.Code, transaction.Amount, transaction.AmountInAccountCurrency, transaction.TransactionDate);
         return returnValue;
     }
@@ -97,7 +99,7 @@ public class TransactionService : ITransactionService
             throw new ArgumentException($"Transaction with id {id} not found");
         }
 
-        await _context.Entry(transaction).Reference("Currency").LoadAsync();   
+        await _context.Entry(transaction).Reference("Currency").LoadAsync();
 
         _logger.LogInformation("Returning transaction with id {id}", id);
         return new TransactionDTO(transaction.Id, transaction.Description, transaction.Currency.Code, transaction.Amount, transaction.AmountInAccountCurrency, transaction.TransactionDate);

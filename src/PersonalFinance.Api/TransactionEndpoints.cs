@@ -8,16 +8,16 @@ public static class TransactionEndpoints
     public static RouteGroupBuilder MapTransactionsApi(this RouteGroupBuilder group)
     {
         group.MapGet("/", GetAllTransactions)
-                .Produces<List<Transaction>>(StatusCodes.Status200OK)
+                .Produces<List<TransactionDTO>>(StatusCodes.Status200OK)
                 .WithOpenApi();
 
         group.MapGet("/{id}", GetTransaction)
-                .Produces<Transaction>(StatusCodes.Status200OK)
+                .Produces<TransactionDTO>(StatusCodes.Status200OK)
                 .Produces(StatusCodes.Status404NotFound)
                 .WithOpenApi();
 
         group.MapPost("/", CreateTransaction)
-                .Produces<Transaction>(StatusCodes.Status201Created)
+                .Produces<TransactionDTO>(StatusCodes.Status201Created)
                 .WithOpenApi();
         
         group.MapPut("/{id}", UpdateTransaction)
@@ -31,7 +31,7 @@ public static class TransactionEndpoints
                 .WithOpenApi();
 
         group.MapGet("/byMonth/{year}/{month}", GetTransactionsByMonth)
-                .Produces<List<Transaction>>(StatusCodes.Status200OK)
+                .Produces<List<TransactionDTO>>(StatusCodes.Status200OK)
                 .WithOpenApi();
 
         return group;

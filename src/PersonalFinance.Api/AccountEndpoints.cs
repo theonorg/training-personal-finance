@@ -58,8 +58,8 @@ public static class AccountsEndpoints
     {
         try
         {
-            _ = await accountService.UpdateByIdAsync(id, Account.Name);
-            return Results.NoContent();
+            var updated = await accountService.UpdateByIdAsync(id, Account.Name);
+            return Results.Ok(updated);
         }
         catch (ArgumentException)
         {
