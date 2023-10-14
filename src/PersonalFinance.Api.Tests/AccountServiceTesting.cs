@@ -51,7 +51,7 @@ public class AccountServiceTesting
     // {
     //     NewAccountDTO newAccountDTO = new NewAccountDTO(accountName, currency, initialBalance);
 
-    //     var client = _app.CreateClient();
+        var client = _app.CreateClient();
     //     var response = await client.PostAsJsonAsync("/account", newAccountDTO);
 
     //     Assert.Equal(HttpStatusCode.Created, response.StatusCode);
@@ -81,7 +81,7 @@ public class AccountServiceTesting
     }
 
     [Fact]
-    public async Task GetNotFoundTodo()
+    public async Task GetNotFoundAccount()
     {
         var client = _app.CreateClient();
         var response = await client.GetAsync("/account/1000");
